@@ -139,11 +139,9 @@ fn find_winner(board: &[[char;3]; 3]) -> Option<Player> {
                 .or_insert(1); 
         }
 
-        if let Some(winner) = map.iter().find(|kv| *kv.1 == 3) {
+        if let Some(winner) = map.iter().find(|kv| *kv.1 == 3 && *kv.0 != Player::NA ) {
             let winning_player = *winner.0;
-            if winning_player != Player::NA {
-                return Some(winning_player);
-            }
+            return Some(winning_player);
         }
     }
     return None;
